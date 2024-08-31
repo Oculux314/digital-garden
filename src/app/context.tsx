@@ -2,7 +2,8 @@
 
 import { Session } from "next-auth";
 import { signIn } from "next-auth/react";
-import { createContext, useContext, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { createContext, use, useContext, useEffect, useState } from "react";
 
 // Initial state
 type ContextType = {
@@ -25,11 +26,13 @@ export default function AppContextProvider({
     session: initialSession,
   });
 
+  const path = usePathname();
+
   useEffect(() => {
-    if (!state.session) {
+    if (!state.session && path !== "/test/loginpagetest") {
       signIn(); // Trigger sign-in process if session is not available
     }
-  }, [state.session]);
+  }, [state.session, path]);
 
   // Show loading or authentication indicator while processing
   if (!state.session) {

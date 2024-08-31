@@ -1,12 +1,12 @@
+import Header from "@/components/header";
 import { auth } from "@/config/auth";
+import bgimage from "@/img/background.png";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 import "../config/database";
 import AppContextProvider from "./context";
 import "./globals.css";
-import Image from "next/image";
-import bgimage from "@/img/background.png";
-import Header from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,13 +27,18 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <AppContextProvider initialSession={session}>
-          <Header/>
+      <AppContextProvider initialSession={session}>
+        <body className="h-[100vh] flex flex-col overflow-hidden">
+          <Header />
           {children}
-          <Image className="object-cover -z-10 brightness-[0.9]" src={bgimage} alt="" fill={true} />
-        </AppContextProvider>
-      </body>
+          <Image
+            className="object-cover -z-10 brightness-[0.9]"
+            src={bgimage}
+            alt=""
+            fill={true}
+          />
+        </body>
+      </AppContextProvider>
     </html>
   );
 }
