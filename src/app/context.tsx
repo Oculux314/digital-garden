@@ -28,7 +28,7 @@ export default function AppContextProvider({
   children,
   initialSession,
 }: AppContextProviderProps) {
-  const [state, setState] = useState<ContextType>({
+  const [state, setState] = useState<StateType>({
     session: initialSession,
     toolSelector: "unselected",
   });
@@ -56,7 +56,7 @@ export const useAppContext = () => {
   if (!context) {
     throw new Error("useAppContext must be used within an AppContextProvider");
   }
-  if (!context.session) {
+  if (!context.state.session) {
     signIn();
   }
   return context;
