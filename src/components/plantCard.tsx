@@ -3,6 +3,7 @@ import { PlantType } from "@/models/plant";
 import InfoComponent from "./info";
 import Plant from "./plant";
 import { useAppContext } from "@/app/context";
+import { waterPlant } from "@/routes/userRoute";
 
 export type PlantCardProps = {
   plant: PlantType | null;
@@ -21,6 +22,7 @@ const PlantCard = ({ plant }: PlantCardProps) => {
   const waterPlant = () => {
     if (context.state.toolSelector == "water" && plant) {
       console.log("watered");
+      waterPlant();
     }
   };
   return (

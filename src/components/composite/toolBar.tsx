@@ -3,6 +3,7 @@ import { useAppContext } from "@/app/context";
 import Tool from "../tool";
 import shovelicon from "@/img/toolicons/shovel.png";
 import wateringcanicon from "@/img/toolicons/wateringcan.png";
+import { waterPlant } from "@/routes/userRoute";
 
 export default function ToolBar() {
   const context = useAppContext();
@@ -12,7 +13,7 @@ export default function ToolBar() {
 
   function water() {
     context.selectTool("water");
-    console.log("watered");
+    console.log("water bucket selected");
   }
 
   return (
