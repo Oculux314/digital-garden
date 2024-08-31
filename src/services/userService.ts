@@ -1,11 +1,11 @@
-import { User, UserType } from "@/models/user";
 import { PlantType } from "@/models/plant";
+import { User, UserType } from "@/models/user";
 import { waterPlant as _waterPlant } from "./plantService";
 
 const MAX_PLANTS: number = 9;
-const TIME_FROM_LAST_WATERED: number = 24*60*60*1000; // 24 hours
+const TIME_FROM_LAST_WATERED: number = 24 * 60 * 60 * 1000; // 24 hours
 
-export async function createUser(user: Omit<UserType, "id">) {
+export async function createUser(user: { name: string }) {
   return User.create(user);
 }
 
@@ -14,15 +14,13 @@ export async function getUsers() {
 }
 
 export async function addPlant(user: UserType, plant: PlantType) {
-  return User.findByIdAndUpdate(
-    user.id, {plants: user.plants.concat(plant)}
-  );
+  return User.findByIdAndUpdate(user.id, { plants: user.plants.concat(plant) });
 }
 
 export async function deletePlant(user: UserType, plant: PlantType) {
-  return User.findByIdAndUpdate(
-    user.id, {plants: user.plants.filter(plants => plants !== plant)}
-  );
+  return User.findByIdAndUpdate(user.id, {
+    plants: user.plants.filter((plants) => plants !== plant),
+  });
 }
 
 export async function stealPlant(
