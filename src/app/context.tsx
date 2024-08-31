@@ -4,15 +4,15 @@ import { signIn } from "next-auth/react";
 import { createContext, useContext, useState } from "react";
 
 // Initial state
-export type tools = "shovel" | "water" | "unselected";
+export type ToolTypes = "shovel" | "water" | "unselected";
 
 type StateType = {
   session: Session | null;
-  toolSelector: "shovel" | "water" | "unselected";
+  toolSelector: ToolTypes;
 };
 type ContextType = {
   state: StateType;
-  selectTool: (newTool: "shovel" | "water" | "unselected") => void;
+  selectTool: (newTool: ToolTypes) => void;
 };
 
 // Create context
@@ -38,7 +38,7 @@ export default function AppContextProvider({
   // }
 
   // State modifier functions
-  const selectTool = (newTool: "shovel" | "water" | "unselected") => {
+  const selectTool = (newTool: ToolTypes) => {
     setState({ ...state, toolSelector: newTool });
   };
 
