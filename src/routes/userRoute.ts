@@ -3,11 +3,12 @@ import { UserType } from "@/models/user";
 import {
   createUser as _createUser, stealPlant as _stealPlant, waterPlant as _waterPlant,
   getUsers,
+  getUserById as _getUserById, getUserByEmail as _getUserByEmail,
   getUsersByNameOrEmail
 } from "@/services/userService";
 
 export async function createUser(user: { name: string }) {
-  _createUser(user);
+  return _createUser(user);
 }
 
 export async function stealPlant(
@@ -18,6 +19,14 @@ export async function stealPlant(
 export async function waterPlant(
     user: UserType, index: number) {
   _waterPlant(user, index);
+}
+
+export async function getUserById(id: string) {
+  return _getUserById(id);
+}
+
+export async function getUserByEmail(email: string) {
+  return _getUserByEmail(email);
 }
 
 export async function searchForUser(searchText: string) {
