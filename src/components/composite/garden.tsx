@@ -11,9 +11,9 @@ const profiles = users.map((user) => {
 });
   return (
     <div className="flex w-full h-full spacing justify-between items-start">
-      <ProfileBar profiles={profiles}/>
-      <PlantGrid/>
       <ToolBar/>
+      <PlantGrid/>
+      <ProfileBar profiles={profiles}/>
     </div>
   );
 };
