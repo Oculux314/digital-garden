@@ -45,7 +45,7 @@ export type ToolTypes = "shovel" | "water" | "unselected";
 type StateType = {
   session: Session | null;
   toolSelector: ToolTypes;
-  plants: PlantType[];
+  plants: (PlantType | null)[];
 };
 
 type ContextType = {
@@ -83,7 +83,7 @@ export default function AppContextProvider({
 
   const deletePlant = (id: string) => {
     const newPlants = state.plants.map((plant) => {
-      plant.id === id ? null : plant;
+      return plant?.id === id ? null : plant;
     });
     setState({ ...state, plants: newPlants });
   };

@@ -4,6 +4,7 @@ import Plant from "@/components/plant";
 import { useAppContext } from "@/app/context";
 
 const Garden = () => {
+  console.log(useAppContext);
   const context = useAppContext();
   const plants = context.state.plants;
   return (

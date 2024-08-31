@@ -4,7 +4,7 @@ import InfoComponent from "./info";
 import Plant from "./plant";
 import { useAppContext } from "@/app/context";
 export type PlantCardProps = {
-  plant: PlantType;
+  plant: PlantType | null;
 };
 
 const PlantCard = ({ plant }: PlantCardProps) => {
@@ -20,7 +20,7 @@ const PlantCard = ({ plant }: PlantCardProps) => {
         onClick={deletePlant}
         className="border-black border py-16 flex justify-center rounded-lg m-1"
       >
-        <Plant plant={plant} />
+        {plant && <Plant plant={plant} />}
       </div>
       <div className="hidden group-hover:block">
         <InfoComponent />
