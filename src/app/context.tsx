@@ -97,7 +97,7 @@ export default function AppContextProvider({
 
 // Custom hook to get state
 
-export const useAppContext = () => {
+export const useAppContext = (): ContextType => {
   const context = useContext(AppContext);
   if (!context) {
     throw new Error("useAppContext must be used within an AppContextProvider");
