@@ -2,6 +2,7 @@
 import { UserType } from "@/models/user";
 import {
   createUser as _createUser, stealPlant as _stealPlant, waterPlant as _waterPlant,
+  getUsers,
   getUsersByNameOrEmail
 } from "@/services/userService";
 
@@ -21,4 +22,9 @@ export async function waterPlant(
 
 export async function searchForUser(searchText: string) {
   return getUsersByNameOrEmail(searchText, searchText);
+}
+
+// Currently just gets all users in the database cause we have no friends :(
+export async function getFriends(user: UserType) {
+  return getUsers();
 }
