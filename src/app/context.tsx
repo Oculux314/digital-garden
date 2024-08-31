@@ -6,15 +6,15 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 const initialPlants: PlantType[] = [
   { id: "1", name: "Rose", type: "Flower", stage: 2, lastWatered: new Date(1)},
-  { id: "1", name: "Tulip", type: "Flower", stage: 1, lastWatered: new Date(1) },
+  { id: "2", name: "Tulip", type: "Flower", stage: 1, lastWatered: new Date(1) },
   {
-    id: "1",
+    id: "3",
     name: "Cactus",
     type: "Succulent",
     stage: 3,
     lastWatered: new Date(1),
   },
-  { id: "1", name: "Fern", type: "Fern", stage: 2, lastWatered: new Date(1) },
+  { id: "4", name: "Fern", type: "Fern", stage: 2, lastWatered: new Date(1) },
   {
     id: "1",
     name: "Sunflower",
@@ -52,6 +52,7 @@ type StateType = {
 type ContextType = {
   state: StateType;
   selectTool: (newTool: ToolTypes) => void;
+  deletePlant: (id: string) => void;
 };
 
 // Create context
@@ -96,7 +97,7 @@ export default function AppContextProvider({
   };
 
   return (
-    <AppContext.Provider value={{ state, selectTool }}>
+    <AppContext.Provider value={{ state, selectTool, deletePlant }}>
       {children}
     </AppContext.Provider>
   );

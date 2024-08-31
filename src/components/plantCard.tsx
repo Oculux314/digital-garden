@@ -3,6 +3,7 @@ import { PlantType } from "@/models/plant";
 import InfoComponent from "./info";
 import Plant from "./plant";
 import { useAppContext } from "@/app/context";
+
 export type PlantCardProps = {
   plant: PlantType | null;
 };
@@ -10,8 +11,10 @@ export type PlantCardProps = {
 const PlantCard = ({ plant }: PlantCardProps) => {
   const context = useAppContext();
   const deletePlant = () => {
-    if (context.state.toolSelector == "shovel") {
+    if (context.state.toolSelector == "shovel" && plant) {
       console.log("deleted");
+      context.selectTool("unselected");
+      context.deletePlant(plant.id);
     }
   };
   return (
