@@ -3,7 +3,8 @@
 import { PlantType } from "@/models/plant";
 import { Session } from "next-auth";
 import { signIn } from "next-auth/react";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+
 const initialPlants: PlantType[] = [
   { id: "1", name: "Rose", type: "Flower", stage: 2, lastWatered: new Date() },
   { id: "1", name: "Tulip", type: "Flower", stage: 1, lastWatered: new Date() },
@@ -55,7 +56,6 @@ type ContextType = {
 };
 
 // Create context
-
 const AppContext = createContext<ContextType | null>(null);
 
 type AppContextProviderProps = {
@@ -73,8 +73,15 @@ export default function AppContextProvider({
     plants: initialPlants,
   });
 
+  useEffect(() => {
+    if (!state.session) {
+      signIn(); // Trigger sign-in process if session is not available
+    }
+  }, [state.session]);
+
+  // Show loading or authentication indicator while processing
   // if (!state.session) {
-  //   return signIn();
+  //   return <p>Loading...</p>; // Or another loading indicator
   // }
 
   // State modifier functions
@@ -96,6 +103,7 @@ export default function AppContextProvider({
   );
 }
 
+// Custom hook to get state
 export const useAppContext = (): ContextType => {
   const context = useContext(AppContext);
   if (!context) {

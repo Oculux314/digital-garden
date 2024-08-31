@@ -1,4 +1,5 @@
 "use client";
+import { searchForUser } from '@/routes/userRoute';
 import React, { useState } from 'react';
 
 const SearchBar = () => {
@@ -8,8 +9,10 @@ const SearchBar = () => {
     setQuery(e.target.value);
   };
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
+    const users = await searchForUser(query)
     console.log('Searching for:', query);
+    console.log(users);
   };
 
   return (
