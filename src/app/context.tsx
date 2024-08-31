@@ -5,39 +5,39 @@ import { signIn } from "next-auth/react";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const initialPlants: PlantType[] = [
-  { id: "1", name: "Rose", type: "Flower", stage: 2, lastWatered: new Date() },
-  { id: "1", name: "Tulip", type: "Flower", stage: 1, lastWatered: new Date() },
+  { id: "1", name: "Rose", type: "Flower", stage: 2, lastWatered: new Date(1)},
+  { id: "1", name: "Tulip", type: "Flower", stage: 1, lastWatered: new Date(1) },
   {
     id: "1",
     name: "Cactus",
     type: "Succulent",
     stage: 3,
-    lastWatered: new Date(),
+    lastWatered: new Date(1),
   },
-  { id: "1", name: "Fern", type: "Fern", stage: 2, lastWatered: new Date() },
+  { id: "1", name: "Fern", type: "Fern", stage: 2, lastWatered: new Date(1) },
   {
     id: "1",
     name: "Sunflower",
     type: "Flower",
     stage: 4,
-    lastWatered: new Date(),
+    lastWatered: new Date(1),
   },
-  { id: "1", name: "Bamboo", type: "Grass", stage: 2, lastWatered: new Date() },
+  { id: "1", name: "Bamboo", type: "Grass", stage: 2, lastWatered: new Date(1) },
   {
     id: "1",
     name: "Lavender",
     type: "Herb",
     stage: 1,
-    lastWatered: new Date(),
+    lastWatered: new Date(1),
   },
   {
     id: "1",
     name: "Orchid",
     type: "Flower",
     stage: 3,
-    lastWatered: new Date(),
+    lastWatered: new Date(1),
   },
-  { id: "1", name: "Mint", type: "Herb", stage: 1, lastWatered: new Date() },
+  { id: "1", name: "Mint", type: "Herb", stage: 1, lastWatered: new Date(1) },
 ];
 
 // Initial state
