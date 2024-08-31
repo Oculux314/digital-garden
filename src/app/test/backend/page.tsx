@@ -1,8 +1,9 @@
 "use client";
 
+import { signIn } from "@/config/auth";
 import { getOnePlusTwo } from "@/routes/exampleRoute";
-import { addPlant } from "@/routes/plantRoute";
-import { signIn } from "next-auth/react";
+import { createPlant } from "@/routes/plantRoute";
+import { createUser } from "@/routes/userRoute";
 
 export default function BackendTestPage() {
   async function testBackend() {
@@ -10,9 +11,14 @@ export default function BackendTestPage() {
     console.log(result);
   }
 
-  function createPlant() {
-    addPlant({ name: "Fern", type: "Indoor" });
+  function addNewPlant() {
+    createPlant({ name: "Fern", type: "Indoor", lastWatered: new Date(), stage: 1 });
     console.log("Plant created");
+  }
+
+  function addNewUser() {
+    createUser({ name: "John Doe" });
+    console.log("User created");
   }
 
   return (
@@ -25,10 +31,16 @@ export default function BackendTestPage() {
       <button className="border" onClick={testBackend}>
         Button: console.log(1 + 2) from backend
       </button>
-      <button className="border" onClick={createPlant}>
+      <button className="border" onClick={addNewPlant}>
         Create Plant
       </button>
-      <button className="border" onClick={() => signIn("google")}>
+      <button className="border" onClick={addNewUser}>
+        Create User
+      </button>
+      <button
+        className="border"
+        onClick={() => signIn("google", { redirectTo: "/" })}
+      >
         Sign In
       </button>
     </div>
