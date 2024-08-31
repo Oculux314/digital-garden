@@ -3,6 +3,41 @@ import { PlantType } from "@/models/plant";
 import { Session } from "next-auth";
 import { signIn } from "next-auth/react";
 import { createContext, useContext, useState } from "react";
+const initialPlants: PlantType[] = [
+  { id: "1", name: "Rose", type: "Flower", stage: 2, lastWatered: new Date() },
+  { id: "1", name: "Tulip", type: "Flower", stage: 1, lastWatered: new Date() },
+  {
+    id: "1",
+    name: "Cactus",
+    type: "Succulent",
+    stage: 3,
+    lastWatered: new Date(),
+  },
+  { id: "1", name: "Fern", type: "Fern", stage: 2, lastWatered: new Date() },
+  {
+    id: "1",
+    name: "Sunflower",
+    type: "Flower",
+    stage: 4,
+    lastWatered: new Date(),
+  },
+  { id: "1", name: "Bamboo", type: "Grass", stage: 2, lastWatered: new Date() },
+  {
+    id: "1",
+    name: "Lavender",
+    type: "Herb",
+    stage: 1,
+    lastWatered: new Date(),
+  },
+  {
+    id: "1",
+    name: "Orchid",
+    type: "Flower",
+    stage: 3,
+    lastWatered: new Date(),
+  },
+  { id: "1", name: "Mint", type: "Herb", stage: 1, lastWatered: new Date() },
+];
 
 // Initial state
 export type ToolTypes = "shovel" | "water" | "unselected";
@@ -34,6 +69,7 @@ export default function AppContextProvider({
   const [state, setState] = useState<StateType>({
     session: initialSession,
     toolSelector: "unselected",
+    plants: initialPlants,
   });
 
   // if (!state.session) {
@@ -43,6 +79,13 @@ export default function AppContextProvider({
   // State modifier functions
   const selectTool = (newTool: ToolTypes) => {
     setState({ ...state, toolSelector: newTool });
+  };
+
+  const deletePlant = (id: string) => {
+    const newPlants = state.plants.map((plant) => {
+      plant.id === id ? null : plant;
+    });
+    setState({ ...state, plants: newPlants });
   };
 
   return (
