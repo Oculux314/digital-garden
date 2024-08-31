@@ -1,3 +1,4 @@
+
 "use client";
 import { PlantType } from "@/models/plant";
 import { Session } from "next-auth";
@@ -94,8 +95,6 @@ export default function AppContextProvider({
     </AppContext.Provider>
   );
 }
-
-// Custom hook to get state
 
 export const useAppContext = (): ContextType => {
   const context = useContext(AppContext);
