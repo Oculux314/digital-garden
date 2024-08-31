@@ -1,5 +1,5 @@
 "use client";
-import { signIn } from "@/config/auth";
+import { signIn } from "next-auth/react";
 export default function LoginPage() {
   return (
     <div className="bg-gray-100 flex items-center justify-center min-h-screen">

@@ -1,4 +1,4 @@
-import { auth, signIn } from "@/config/auth";
+import { auth } from "@/config/auth";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../config/database";
@@ -21,10 +21,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await auth();
-
-  if (!session) {
-    return signIn();
-  }
 
   return (
     <html lang="en">
