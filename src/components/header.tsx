@@ -8,7 +8,7 @@ import SearchBar from './searchBar';
 
 export default function Header() {
   return (
-    <header className="bg-cyan-300 p-6 flex items-center">
+    <header className="bg-cyan-200 p-6 flex items-center">
       <div className="flex w-full items-center gap-4 mr-3">
         {/* Logo */}
         <Image src={mrflowerpoticon} alt="Logo" className="h-50 w-50" height={50} width={50} />
