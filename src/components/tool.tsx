@@ -1,23 +1,26 @@
-"use client"
-import React, { FC } from 'react';
+"use client";
+
+import Image from "next/image";
 
 type ToolProps = {
-  src: string;
+  image: string;
   name: string;
-  f: () => void;
-}
+  onClick: () => void;
+};
 
-const Tool: FC<ToolProps> = ({src, name, f}) => {
+const Tool = ({ image, name, onClick }: ToolProps) => {
   function handleClick() {
-    alert(name);
-    f();
+    onClick();
   }
 
   return (
-    <button onClick={handleClick} className="w-16 h-16 flex items-center justify-center border-none rounded-lg bg-teal-600 hover:bg-teal-800">
-      <img src={src} alt={name}/>
+    <button
+      onClick={handleClick}
+      className="w-16 h-16 flex items-center justify-center border-none rounded-lg bg-teal-600 hover:bg-teal-800"
+    >
+      <Image src={image} alt={name} width={64} height={64} />
     </button>
   );
-}
+};
 
 export default Tool;
