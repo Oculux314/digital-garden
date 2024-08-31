@@ -9,7 +9,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     const user = await getUserById(params.id);
     if (user) {
       return (
-        <div>
+        <div className="h-full w-full">
           <ToolBar />
           <Garden />
         </div>
