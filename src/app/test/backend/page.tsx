@@ -1,7 +1,8 @@
 "use client";
 
 import { getOnePlusTwo } from "@/routes/exampleRoute";
-import { addPlant } from "@/routes/plantRoute";
+import { createPlant } from "@/routes/plantRoute";
+import { createUser } from "@/routes/userRoute";
 import { signIn } from "next-auth/react";
 
 export default function BackendTestPage() {
@@ -10,9 +11,14 @@ export default function BackendTestPage() {
     console.log(result);
   }
 
-  function createPlant() {
-    addPlant({ name: "Fern", type: "Indoor" });
+  function addNewPlant() {
+    createPlant({ name: "Fern", type: "Indoor", lastWatered: new Date(), stage: 1 });
     console.log("Plant created");
+  }
+
+  function addNewUser() {
+    createUser({ name: "John Doe" });
+    console.log("User created");
   }
 
   return (
@@ -25,8 +31,11 @@ export default function BackendTestPage() {
       <button className="border" onClick={testBackend}>
         Button: console.log(1 + 2) from backend
       </button>
-      <button className="border" onClick={createPlant}>
+      <button className="border" onClick={addNewPlant}>
         Create Plant
+      </button>
+      <button className="border" onClick={addNewUser}>
+        Create User
       </button>
       <button className="border" onClick={() => signIn("google")}>
         Sign In
