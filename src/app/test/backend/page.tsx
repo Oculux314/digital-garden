@@ -37,7 +37,10 @@ export default function BackendTestPage() {
       <button className="border" onClick={addNewUser}>
         Create User
       </button>
-      <button className="border" onClick={() => signIn("google")}>
+      <button
+        className="border"
+        onClick={() => signIn("google", { redirectTo: "/" })}
+      >
         Sign In
       </button>
     </div>
