@@ -1,15 +1,15 @@
 "use client";
+import { useAppContext } from "@/app/context";
 import Tool from "../tool";
-import { useState } from "react";
 
 function water() {
   console.log("");
 }
 
 export default function ToolBar() {
-  const [grab, setGrab] = useState(false);
+  const context = useAppContext();
   function shovel() {
-    setGrab(true);
+    console.log(context.toolSelector);
   }
   return (
     <div className="top-4 left-20 flex gap-4 p-4 border border-black rounded-lg bg-yellow-100 mt-5">
