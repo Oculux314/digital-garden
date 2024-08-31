@@ -1,5 +1,5 @@
-import Garden from "@/components/composite components/garden";
-import ToolBar from "@/components/composite components/toolBar";
+import Garden from "@/components/composite/garden";
+import ToolBar from "@/components/composite/toolBar";
 
 export default function Home() {
   return (
