@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 // import image from "@/img/placeholderimg.jpg";
-import image from "@/img/k.png";
+import image from "@/img/placeholderimg.jpg";
 
 export default function InfoComponent() {
   return (
