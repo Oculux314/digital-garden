@@ -14,15 +14,22 @@ export type PlantCardProps = {
 const PlantCard = ({ plant }: PlantCardProps) => {
   const context = useAppContext();
   const [shouldDelete, setShouldDelete] = useState(false);
+  const [shouldWater, setShouldWater] = useState(false);
 
   const handlePlantClick = () => {
     if (context.state.toolSelector === "shovel" && plant) {
       setShouldDelete(true);
       context.selectTool("unselected");
     }
+    if (context.state.toolSelector === "water" && plant){
+      setShouldWater(true)
+      context.selectTool("unselected")
+    }
   };
 
-  const wateringPlant = () => {
+  const wateringPlant = () => {};
+
+  useEffect(() => {
     if (context.state.toolSelector == "water" && plant) {
       const user = context.state.session?.user;
       if (!user || !user.id) {
@@ -31,8 +38,9 @@ const PlantCard = ({ plant }: PlantCardProps) => {
       console.log("watered");
       waterPlant(user.id, plant.id);
       console.log(plant.lastWatered);
-    }
-  };
+    }, [context.state.toolSelector,shouldWater, plant, context]
+  });
+
   useEffect(() => {
     if (shouldDelete && plant) {
       context.deletePlant(plant.id);
