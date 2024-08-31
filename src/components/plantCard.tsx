@@ -23,11 +23,12 @@ const PlantCard = ({ plant }: PlantCardProps) => {
   const wateringPlant = () => {
     if (context.state.toolSelector == "water" && plant) {
       const user = context.state.session?.user;
-      if (!user) {
+      if (!user || !user.id) {
         return notFound();
       }
       console.log("watered");
       waterPlant(user.id, plant.id);
+      console.log(plant.lastWatered);
     }
   };
   return (
