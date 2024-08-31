@@ -9,7 +9,7 @@ export async function createUser(user: { name: string }) {
   return User.create(user);
 }
 
-export async function getUsers() {
+export async function getUsers(): Promise<UserType[]> {
   return User.find();
 }
 

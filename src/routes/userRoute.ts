@@ -34,6 +34,6 @@ export async function searchForUser(searchText: string) {
 }
 
 // Currently just gets all users in the database cause we have no friends :(
-export async function getFriends(user: UserType) {
+export async function getFriends() {
   return getUsers();
 }
