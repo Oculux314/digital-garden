@@ -2,6 +2,7 @@
 
 import { getOnePlusTwo } from "@/routes/exampleRoute";
 import { addPlant } from "@/routes/plantRoute";
+import { signIn } from "next-auth/react";
 
 export default function BackendTestPage() {
   async function testBackend() {
@@ -26,6 +27,9 @@ export default function BackendTestPage() {
       </button>
       <button className="border" onClick={createPlant}>
         Create Plant
+      </button>
+      <button className="border" onClick={() => signIn("google")}>
+        Sign In
       </button>
     </div>
   );
