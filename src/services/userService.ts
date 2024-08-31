@@ -13,6 +13,10 @@ export async function getUsers() {
   return User.find();
 }
 
+export async function getUsersByNameOrEmail(name: string, email: string) {
+  return User.find({ $or: [{ name }, { email }] });
+}
+
 export async function addPlant(user: UserType, plant: PlantType) {
   return User.findByIdAndUpdate(user.id, { plants: user.plants.concat(plant) });
 }
@@ -25,7 +29,7 @@ export async function deletePlant(user: UserType, plant: PlantType) {
 
 export async function stealPlant(
     user: UserType, otherUser: UserType, index: number) {
-      
+
   if (user.plants.length >= MAX_PLANTS) {
     throw Error("You already have " + MAX_PLANTS + " plants");
   }
