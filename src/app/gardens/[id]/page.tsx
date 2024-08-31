@@ -10,7 +10,6 @@ export default async function Page({ params }: { params: { id: string } }) {
     if (user) {
       return (
         <div className="h-full w-full">
-          <ToolBar />
           <Garden />
         </div>
       );
