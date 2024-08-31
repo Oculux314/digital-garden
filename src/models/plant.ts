@@ -6,6 +6,7 @@ export type PlantType = {
   name: string;
   type: string;
   lastWatered: Date;
+  stage: number;
 };
 
 export const PlantSchema = new Schema({
