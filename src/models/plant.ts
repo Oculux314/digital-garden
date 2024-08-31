@@ -5,6 +5,8 @@ export type PlantType = {
   id: string;
   name: string;
   type: string;
+  stage: number;
+  water: boolean;
 };
 
 export const PlantSchema = new Schema({
