@@ -1,6 +1,8 @@
+import { auth } from "@/config/auth";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../config/database";
+import AppContextProvider from "./context";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -13,14 +15,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <AppContextProvider initialSession={session}>
+          {children}
+        </AppContextProvider>
+      </body>
     </html>
   );
 }

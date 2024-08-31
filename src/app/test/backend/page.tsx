@@ -1,9 +1,9 @@
 "use client";
 
+import { signIn } from "@/config/auth";
 import { getOnePlusTwo } from "@/routes/exampleRoute";
 import { createPlant } from "@/routes/plantRoute";
 import { createUser } from "@/routes/userRoute";
-import { signIn } from "next-auth/react";
 
 export default function BackendTestPage() {
   async function testBackend() {

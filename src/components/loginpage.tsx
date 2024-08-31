@@ -5,7 +5,7 @@ export default function LoginPage() {
     <div className="bg-gray-100 flex items-center justify-center min-h-screen">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
         <h2 className="text-2xl font-semibold mb-6 text-gray-800 text-center">Login</h2>
-        
+
         <div className="space-y-6">
           <button
             type="button"
