@@ -15,3 +15,8 @@ export async function getPlantById(id: string): Promise<PlantType | null> {
 export async function updatePlant(plant: PlantType) {
   return Plant.findByIdAndUpdate(plant.id, plant);
 }
+
+export async function waterPlant(plant: PlantType) {
+  plant.lastWatered = new Date(Date.now());
+  updatePlant(plant);
+}
