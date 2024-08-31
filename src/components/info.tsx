@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function InfoComponent() {
   return (
     <div className="border border-black w-[40%] rounded-lg p-8 col justify-items-center">
