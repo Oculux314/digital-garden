@@ -17,28 +17,28 @@ const initialPlants: PlantType[] = [
   },
   { id: "4", name: "Fern", type: "Fern", stage: 2, lastWatered: new Date(1) },
   {
-    id: "1",
+    id: "5",
     name: "Sunflower",
     type: "Flower",
     stage: 4,
     lastWatered: new Date(1),
   },
-  { id: "1", name: "Bamboo", type: "Grass", stage: 2, lastWatered: new Date(1) },
+  { id: "6", name: "Bamboo", type: "Grass", stage: 2, lastWatered: new Date(1) },
   {
-    id: "1",
+    id: "7",
     name: "Lavender",
     type: "Herb",
     stage: 1,
     lastWatered: new Date(1),
   },
   {
-    id: "1",
+    id: "8",
     name: "Orchid",
     type: "Flower",
     stage: 3,
     lastWatered: new Date(1),
   },
-  { id: "1", name: "Mint", type: "Herb", stage: 1, lastWatered: new Date(1) },
+  { id: "9", name: "Mint", type: "Herb", stage: 1, lastWatered: new Date(1) },
 ];
 
 // Initial state

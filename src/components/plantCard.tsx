@@ -5,6 +5,7 @@ import Plant from "./plant";
 import { useAppContext } from "@/app/context";
 import { waterPlant } from "@/routes/userRoute";
 import { notFound } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export type PlantCardProps = {
   plant: PlantType | null;
@@ -12,11 +13,12 @@ export type PlantCardProps = {
 
 const PlantCard = ({ plant }: PlantCardProps) => {
   const context = useAppContext();
-  const deletePlant = () => {
-    if (context.state.toolSelector == "shovel" && plant) {
-      console.log("deleted");
+  const [shouldDelete, setShouldDelete] = useState(false);
+
+  const handlePlantClick = () => {
+    if (context.state.toolSelector === "shovel" && plant) {
+      setShouldDelete(true);
       context.selectTool("unselected");
-      context.deletePlant(plant.id);
     }
   };
 
@@ -31,10 +33,17 @@ const PlantCard = ({ plant }: PlantCardProps) => {
       console.log(plant.lastWatered);
     }
   };
+  useEffect(() => {
+    if (shouldDelete && plant) {
+      context.deletePlant(plant.id);
+      setShouldDelete(false);
+    }
+  }, [context.state.toolSelector, shouldDelete, plant, context]);
+
   return (
     <div className="group ">
       <div
-        onClick={deletePlant}
+        onClick={handlePlantClick}
         className="border-black border py-16 flex justify-center rounded-lg m-1"
       >
         {plant && <Plant plant={plant} />}
