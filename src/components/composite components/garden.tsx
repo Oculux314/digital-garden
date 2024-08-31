@@ -13,7 +13,7 @@ const plants: PlantType[] = [
   { id: "1", name: "Mint", type: "Herb", stage: 1, water: true },
 ];
 
-export default function RayPage() {
+const Garden = () => {
   return (
     <div className="px-16">
       <div className="grid grid-cols-3">
@@ -23,4 +23,6 @@ export default function RayPage() {
       </div>
     </div>
   );
-}
+};
+
+export default Garden;
