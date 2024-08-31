@@ -15,7 +15,7 @@ const plants: PlantType[] = [
 
 const Garden = () => {
   return (
-    <div className="px-16">
+    <div className="px-16 mt-8">
       <div className="grid grid-cols-3">
         {plants.map((plant, index) => (
           <PlantCard key={index} plant={plant} />
