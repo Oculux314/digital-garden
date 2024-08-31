@@ -1,3 +1,4 @@
+"use client";
 import PlantCard from "@/components/plantCard";
 import { PlantType } from "@/models/plant";
 
