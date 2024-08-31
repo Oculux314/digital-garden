@@ -68,5 +68,9 @@ export async function waterPlant(userId: string, plantId: string) {
   if (!user) {
     return notFound();
   }
-  _waterPlant(user.plants[index]);
+  user.plants.forEach((plant, index) => {
+    if (plant.id === plantId) {
+      _waterPlant(user.plants[index]);
+    }
+  });
 }
