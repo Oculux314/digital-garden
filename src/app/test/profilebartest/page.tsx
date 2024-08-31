@@ -1,4 +1,4 @@
-import ProfileBar from "@/components/composite components/profileBar";
+import ProfileBar from "@/components/composite/profileBar";
 
 export default function ExampleTest() {
   const profiles = [
