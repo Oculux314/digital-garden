@@ -1,7 +1,7 @@
 "use server";
 import { PlantType } from "@/models/plant";
-import { createPlant } from "@/services/plantService";
+import { createPlant as _createPlant } from "@/services/plantService";
 
-export async function addPlant(plant: Omit<PlantType, "id">) {
-  createPlant(plant);
+export async function createPlant(plant: Omit<PlantType, "id">) {
+  _createPlant(plant);
 }
