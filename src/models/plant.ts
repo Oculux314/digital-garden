@@ -2,6 +2,7 @@
 import { Schema, model } from "mongoose";
 
 export type PlantType = {
+  id: string;
   name: string;
   type: string;
   stage: number;
