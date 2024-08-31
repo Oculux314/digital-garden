@@ -1,7 +1,7 @@
 // Go to /test/example to see the result
 import SlidingSidebar from "@/components/composite components/friendsBar";
 export default function ExampleTest() {
-  return <MyComponefrnt />;
+  return <MyComponent />;
 }
 
 function MyComponent() {
