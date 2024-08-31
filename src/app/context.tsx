@@ -33,7 +33,9 @@ export default function AppContextProvider({
   // }
 
   // State modifier functions
-
+  const select = () => {
+    setState({ ...state, toolSelector: "shovel" });
+  };
   return <AppContext.Provider value={state}>{children}</AppContext.Provider>;
 }
 
