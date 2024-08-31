@@ -1,11 +1,9 @@
 "use client";
+import { useAppContext } from "@/app/context";
 import { PlantType } from "@/models/plant";
+import { waterPlant } from "@/routes/userRoute";
 import InfoComponent from "./info";
 import Plant from "./plant";
-import { useAppContext } from "@/app/context";
-import { waterPlant } from "@/routes/userRoute";
-import { notFound } from "next/navigation";
-import { useEffect, useState } from "react";
 
 export type PlantCardProps = {
   plant: PlantType | null;
@@ -16,15 +14,15 @@ const PlantCard = ({ plant }: PlantCardProps) => {
   const user = context.state.session?.user;
 
   const handlePlantClick = () => {
-    if (context.state.toolSelector === "shovel" && plant) {
+    if (context.state.selectedTool === "shovel" && plant) {
       context.deletePlant(plant.id);
       context.selectTool("unselected");
-      console.log("shovel function called");
+      console.log("Shovel function called");
     }
-    if (context.state.toolSelector === "water" && plant && user?.id) {
+    if (context.state.selectedTool === "water" && plant && user?.id) {
       waterPlant(user.id, plant.id);
       context.selectTool("unselected");
-      console.log("water function called");
+      console.log("Water function called");
     }
   };
 

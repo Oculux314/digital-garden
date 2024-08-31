@@ -46,7 +46,7 @@ export type ToolTypes = "shovel" | "water" | "unselected";
 
 type StateType = {
   session: Session | null;
-  toolSelector: ToolTypes;
+  selectedTool: ToolTypes;
   plants: (PlantType | null)[];
 };
 
@@ -70,7 +70,7 @@ export default function AppContextProvider({
 }: AppContextProviderProps) {
   const [state, setState] = useState<StateType>({
     session: initialSession,
-    toolSelector: "unselected",
+    selectedTool: "unselected",
     plants: initialPlants,
   });
 
@@ -89,7 +89,8 @@ export default function AppContextProvider({
 
   // State modifier functions
   const selectTool = (newTool: ToolTypes) => {
-    setState({ ...state, toolSelector: newTool });
+    console.log("Switching to tool: ", newTool);
+    setState({ ...state, selectedTool: newTool });
   };
 
   const deletePlant = (id: string) => {

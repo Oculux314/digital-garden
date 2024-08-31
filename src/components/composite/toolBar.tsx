@@ -1,19 +1,18 @@
 "use client";
 import { useAppContext } from "@/app/context";
-import Tool from "../tool";
 import shovelicon from "@/img/toolicons/shovel.png";
 import wateringcanicon from "@/img/toolicons/wateringcan.png";
-import { waterPlant } from "@/routes/userRoute";
+import Tool from "../tool";
 
 export default function ToolBar() {
   const context = useAppContext();
+
   function shovel() {
     context.selectTool("shovel");
   }
 
   function water() {
     context.selectTool("water");
-    console.log("water bucket selected");
   }
 
   return (
