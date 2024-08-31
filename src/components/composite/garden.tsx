@@ -1,23 +1,19 @@
-"use client";
-import PlantCard from "@/components/plantCard";
-import { PlantType } from "@/models/plant";
-import Plant from "@/components/plant";
-import { useAppContext } from "@/app/context";
+import ToolBar from "./toolBar";
+import ProfileBar from "./profileBar";
+import PlantGrid from "./plantgrid";
+import { getFriends } from "@/routes/userRoute";
+import { url } from "inspector";
 
-const Garden = () => {
-  const context = useAppContext();
-  const plants = context.state.plants;
+const Garden = async () => {
+const users = await getFriends();
+const profiles = users.map((user) => {
+  return {url:"/gardens/" + user.id, name:user.name, src:user.image}
+});
   return (
-    <div className="px-16 mt-8">
-      <div className="grid grid-cols-3">
-        {plants.map((plant, index) => {
-          return (
-            <div key={index} className="col">
-              <PlantCard key={index} plant={plant} />
-            </div>
-          );
-        })}
-      </div>
+    <div className="flex w-full h-full spacing justify-between items-start">
+      <ProfileBar profiles={profiles}/>
+      <PlantGrid/>
+      <ToolBar/>
     </div>
   );
 };

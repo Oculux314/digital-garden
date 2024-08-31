@@ -5,7 +5,7 @@ import image from "@/img/toolicons/fertiliser.png";
 
 export default function InfoComponent() {
   return (
-    <div className="flex absolute">
+    <div className="hidden flex absolute">
       {/* Plant Image Component */}
       <div className="relative border border-black w-[100px] h-[120px] rounded-lg p-8 col justify-items-center">
         <Image
