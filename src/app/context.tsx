@@ -1,4 +1,5 @@
 "use client";
+import { PlantType } from "@/models/plant";
 import { Session } from "next-auth";
 import { signIn } from "next-auth/react";
 import { createContext, useContext, useState } from "react";
@@ -9,7 +10,9 @@ export type ToolTypes = "shovel" | "water" | "unselected";
 type StateType = {
   session: Session | null;
   toolSelector: ToolTypes;
+  plants: PlantType[];
 };
+
 type ContextType = {
   state: StateType;
   selectTool: (newTool: ToolTypes) => void;

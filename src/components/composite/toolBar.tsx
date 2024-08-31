@@ -9,7 +9,7 @@ function water() {
 export default function ToolBar() {
   const context = useAppContext();
   function shovel() {
-    console.log(context.toolSelector);
+    context.selectTool("shovel");
   }
   return (
     <div className="top-4 left-20 flex gap-4 p-4 border border-black rounded-lg bg-yellow-100 mt-5">
