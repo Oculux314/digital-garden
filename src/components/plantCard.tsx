@@ -17,6 +17,12 @@ const PlantCard = ({ plant }: PlantCardProps) => {
       context.deletePlant(plant.id);
     }
   };
+
+  const waterPlant = () => {
+    if (context.state.toolSelector == "water" && plant) {
+      console.log("watered");
+    }
+  };
   return (
     <div className="group ">
       <div
