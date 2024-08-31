@@ -10,11 +10,12 @@ export type PlantCardProps = {
 
 const PlantCard = ({ plant }: PlantCardProps) => {
   const context = useAppContext();
+
   const deletePlant = () => {
     if (context.state.toolSelector == "shovel" && plant) {
-      console.log("deleted");
       context.selectTool("unselected");
       context.deletePlant(plant.id);
+      console.log("deleted and unselected");
     }
   };
   return (
