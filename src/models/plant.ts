@@ -1,5 +1,4 @@
-// Mongoose model for Plant
-import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 export type PlantType = {
   id: string;
@@ -9,7 +8,7 @@ export type PlantType = {
   stage: number;
 };
 
-export const PlantSchema = new Schema({
+export const PlantSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -21,7 +20,8 @@ export const PlantSchema = new Schema({
   lastWatered: {
     type: Date,
     required: true,
-  }
+  },
 });
 
-export const Plant = model("Plant", PlantSchema);
+export const Plant =
+  mongoose.models?.Plant ?? mongoose.model("Plant", PlantSchema);
