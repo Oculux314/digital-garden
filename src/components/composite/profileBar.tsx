@@ -13,17 +13,20 @@ type ProfileBarProps = {
 }
 
 export default function ProfileBar({ profiles }: ProfileBarProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleProfilesBar = () => {
-    setIsOpen(!isOpen);
-  };
+  // const [isOpen, setIsOpen] = useState(true);
+  // const toggleProfilesBar = () => {
+  //   setIsOpen(!isOpen);
+  // };
 
   return (
     <div>
-      <div
+      {/* <div
         className={`fixed top-0 left-0 h-full bg-green-800 text-white p-4 shadow-lg transition-transform duration-300 ${
           isOpen ? "w-32 translate-x-0" : "w-32 -translate-x-full"
         }`}
+      > */}
+      <div
+        className={"fixed top-0 left-0 h-full bg-green-800 text-white p-4 shadow-lg transition-transform duration-300 w-32 translate-x-0"}
       >
         <ul>
           {/* <li className="mb-4 font-bold"></li> */}
