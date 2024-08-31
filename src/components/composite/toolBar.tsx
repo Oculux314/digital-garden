@@ -2,15 +2,11 @@
 import Tool from "../tool";
 import { useState } from "react";
 
-interface ToolBarProps {
-  onSelect: (tool: string) => void;
-}
-
 function water() {
-  console.log("black men kissing andy xu baba");
+  console.log("");
 }
 
-export default function ToolBar({ onSelect }: ToolBarProps) {
+export default function ToolBar() {
   const [grab, setGrab] = useState(false);
   function shovel() {
     setGrab(true);

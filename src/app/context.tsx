@@ -7,6 +7,7 @@ import { createContext, useContext, useState } from "react";
 
 type ContextType = {
   session: Session | null;
+  toolSelector: "shovel" | "water" | "unselected";
 };
 
 // Create context
@@ -24,6 +25,7 @@ export default function AppContextProvider({
 }: AppContextProviderProps) {
   const [state, setState] = useState<ContextType>({
     session: initialSession,
+    toolSelector: "unselected",
   });
 
   // if (!state.session) {
