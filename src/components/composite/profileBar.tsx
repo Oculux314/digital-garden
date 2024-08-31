@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 
 type Profile = {
   src: string;
@@ -13,20 +13,22 @@ type ProfileBarProps = {
 
 export default function ProfileBar({ profiles }: ProfileBarProps) {
   return (
-    <>
-      <div
-        className={"top-0 self-stretch left-0 h-full bg-green-600 text-white p-4 shadow-lg transition-transform duration-300 w-32 translate-x-0"}
-      >
-        <ul>
-          {profiles.map((profile, index) => (
-              <li key={index} className="mb-2">
-                <a href={profile.url}>
-                  <img src={profile.src} alt={profile.name}/>
-                </a>
-              </li>
-            ))}
-        </ul>
-      </div>
-    </>
+    <div
+      className="float-left flex-col gap-4 p-4 rounded-lg bg-cyan-200 mt-6 ml-5 w-24 h-100 overflow-y-auto max-h-screen"
+    >
+      <ul>
+        {profiles.map((profile, index) => (
+          <li key={index} className="mb-2">
+            <a href={profile.url}>
+              <img
+                src={profile.src}
+                alt={profile.name}
+                className="w-22 h-22 rounded-lg"
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
