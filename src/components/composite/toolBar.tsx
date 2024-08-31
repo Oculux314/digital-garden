@@ -1,9 +1,7 @@
 "use client";
 import Tool from "../tool";
 
-function shovel() {
-  console.log("nigga");
-}
+function shovel() {}
 
 function water() {
   console.log("black men kissing andy xu baba");
