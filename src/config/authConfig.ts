@@ -8,11 +8,13 @@ const authConfig: NextAuthConfig = {
       clientSecret: process.env.AUTH_GOOGLE_SECRET!,
     }),
   ],
-  // Optionally add other NextAuth.js settings here
   secret: process.env.AUTH_SECRET!,
   session: {
     strategy: 'jwt',
   },
+  // pages: {
+  //   signIn: '/test/loginpagetest',
+  // },
 };
 
 export default authConfig satisfies NextAuthConfig;
