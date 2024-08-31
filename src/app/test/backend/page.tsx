@@ -1,11 +1,17 @@
 "use client";
 
-import { getOnePlusTwo } from "@/services/exampleService";
+import { getOnePlusTwo } from "@/routes/exampleRoute";
+import { addPlant } from "@/routes/plantRoute";
 
 export default function BackendTestPage() {
   async function testBackend() {
     const result = await getOnePlusTwo();
     console.log(result);
+  }
+
+  function createPlant() {
+    addPlant({ name: "Fern", type: "Indoor" });
+    console.log("Plant created");
   }
 
   return (
@@ -17,6 +23,9 @@ export default function BackendTestPage() {
       </p>
       <button className="border" onClick={testBackend}>
         Button: console.log(1 + 2) from backend
+      </button>
+      <button className="border" onClick={createPlant}>
+        Create Plant
       </button>
     </div>
   );
