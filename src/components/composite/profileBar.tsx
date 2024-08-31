@@ -14,7 +14,7 @@ type ProfileBarProps = {
 export default function ProfileBar({ profiles }: ProfileBarProps) {
   return (
     <div
-      className="float-left flex-col gap-4 p-4 rounded-lg bg-cyan-200 mt-6 ml-5 w-24 h-100 overflow-y-auto max-h-screen"
+      className="flex-col gap-4 p-4 rounded-lg bg-cyan-200 mt-6 mr-5 w-24 h-100 overflow-y-auto max-h-screen"
     >
       <ul>
         {profiles.map((profile, index) => (
