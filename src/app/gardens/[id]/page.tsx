@@ -15,9 +15,9 @@ export default async function Page({ params }: { params: { id: string } }) {
         </div>
       );
     } else {
-      redirect("http://localhost:3000/");
+      redirect(process.env.APP_URL!);
     }
   } catch (e) {
-    redirect("http://localhost:3000/");
+    redirect(process.env.APP_URL!);
   }
 }
