@@ -33,9 +33,10 @@ export default function AppContextProvider({
   // }
 
   // State modifier functions
-  const select = () => {
+  const selectTool = (newTool: "shovel" | "water" | "unselected") => {
     setState({ ...state, toolSelector: "shovel" });
   };
+
   return <AppContext.Provider value={state}>{children}</AppContext.Provider>;
 }
 
