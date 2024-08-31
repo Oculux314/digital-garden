@@ -1,5 +1,6 @@
 "use client";
 import PlantCard from "@/components/plantCard";
+import Plant from "@/components/plant";
 import { PlantType } from "@/models/plant";
 
 const plants: PlantType[] = [
