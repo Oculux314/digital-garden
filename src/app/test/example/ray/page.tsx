@@ -15,7 +15,7 @@ const plants: PlantType[] = [
 
 export default function RayPage() {
   return (
-    <div>
+    <div className="grid grid-cols-3">
       {plants.map((plant, index) => (
         <PlantCard key={index} plant={plant} />
       ))}

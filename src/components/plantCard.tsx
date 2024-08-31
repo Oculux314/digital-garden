@@ -5,7 +5,11 @@ export type PlantCardProps = {
 };
 
 const PlantCard = ({ plant }: PlantCardProps) => {
-  return <div className="border-black border">Plant Card</div>;
+  return (
+    <div className="border-black border p-8 flex justify-center rounded-lg gap-4">
+      Plant Card
+    </div>
+  );
 };
 
 export default PlantCard;
