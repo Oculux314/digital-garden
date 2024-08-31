@@ -1,14 +1,11 @@
-type plantType = {
-  plant: {
-    name: string;
-    type: string;
-    stage: number;
-    water: boolean;
-  };
+import { PlantType } from "@/models/plant";
+
+export type PlantCardProps = {
+  plant: PlantType;
 };
 
-const PlantCard = ({ plant }: plantType) => {
-  return <div>Plant Card</div>;
+const PlantCard = ({ plant }: PlantCardProps) => {
+  return <div className="border-black border">Plant Card</div>;
 };
 
 export default PlantCard;
