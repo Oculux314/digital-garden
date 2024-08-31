@@ -3,7 +3,7 @@ import { PlantType } from "@/models/plant";
 import { Session } from "next-auth";
 import { signIn } from "next-auth/react";
 import { usePathname } from "next/navigation";
-import { createContext, use, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const initialPlants: PlantType[] = [
   { id: "1", name: "Rose", type: "Flower", stage: 2, lastWatered: new Date(1)},

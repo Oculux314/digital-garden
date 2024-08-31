@@ -1,7 +1,6 @@
 // import { useEffect, useState } from "react";
 import Garden from "@/components/composite/garden";
-import ToolBar from "@/components/composite/toolBar";
-import { getUserById, getUserByEmail } from "@/routes/userRoute";
+import { getUserById } from "@/routes/userRoute";
 import { redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: { id: string } }) {
