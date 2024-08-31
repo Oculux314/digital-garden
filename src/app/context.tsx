@@ -2,6 +2,7 @@
 import { PlantType } from "@/models/plant";
 import { Session } from "next-auth";
 import { signIn } from "next-auth/react";
+import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const initialPlants: PlantType[] = [
@@ -73,11 +74,13 @@ export default function AppContextProvider({
     plants: initialPlants,
   });
 
+  const path = usePathname();
+
   useEffect(() => {
-    if (!state.session) {
+    if (!state.session && path !== "/test/loginpagetest") {
       signIn(); // Trigger sign-in process if session is not available
     }
-  }, [state.session]);
+  }, [state.session, path]);
 
   // Show loading or authentication indicator while processing
   // if (!state.session) {

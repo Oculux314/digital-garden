@@ -9,8 +9,16 @@ export async function createUser(user: { name: string }) {
   return User.create(user);
 }
 
-export async function getUsers() {
+export async function getUsers(): Promise<UserType[]> {
   return User.find();
+}
+
+export async function getUserById(id: string): Promise<UserType | null> {
+  return User.findById(id);
+}
+
+export async function getUserByEmail(email: string): Promise<UserType | null> {
+  return User.findOne({ email });
 }
 
 export async function getUsersByNameOrEmail(

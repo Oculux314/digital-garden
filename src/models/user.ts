@@ -4,6 +4,8 @@ import { PlantType } from "./plant";
 export type UserType = {
   id: string;
   name: string;
+  email: string;
+  image: string;
   plants: Array<PlantType>;
 };
 
