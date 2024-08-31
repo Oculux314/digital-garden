@@ -3,6 +3,7 @@ import { PlantType } from "@/models/plant";
 import InfoComponent from "./info";
 import Plant from "./plant";
 import { useAppContext } from "@/app/context";
+import { useEffect, useState } from "react";
 
 export type PlantCardProps = {
   plant: PlantType | null;
@@ -10,18 +11,26 @@ export type PlantCardProps = {
 
 const PlantCard = ({ plant }: PlantCardProps) => {
   const context = useAppContext();
+  const [shouldDelete, setShouldDelete] = useState(false);
 
-  const deletePlant = () => {
-    if (context.state.toolSelector == "shovel" && plant) {
+  const handlePlantClick = () => {
+    if (context.state.toolSelector === "shovel" && plant) {
+      setShouldDelete(true);
       context.selectTool("unselected");
-      context.deletePlant(plant.id);
-      console.log("deleted and unselected");
     }
   };
+
+  useEffect(() => {
+    if (shouldDelete && plant) {
+      context.deletePlant(plant.id);
+      setShouldDelete(false);
+    }
+  }, [context.state.toolSelector, shouldDelete, plant]);
+
   return (
     <div className="group ">
       <div
-        onClick={deletePlant}
+        onClick={handlePlantClick}
         className="border-black border py-16 flex justify-center rounded-lg m-1"
       >
         {plant && <Plant plant={plant} />}
