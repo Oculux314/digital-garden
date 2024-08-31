@@ -26,9 +26,9 @@ export default function AppContextProvider({
     session: initialSession,
   });
 
-  if (!state.session) {
-    return signIn();
-  }
+  // if (!state.session) {
+  //   return signIn();
+  // }
 
   // State modifier functions
 
