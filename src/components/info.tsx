@@ -5,7 +5,7 @@ import image from "@/img/placeholderimg.jpg";
 
 export default function InfoComponent() {
   return (
-    <div className="flex">
+    <div className="flex absolute">
       {/* Plant Image Component */}
       <div className="relative border border-black w-[400px] h-[500px] rounded-lg p-8 col justify-items-center">
         <Image
