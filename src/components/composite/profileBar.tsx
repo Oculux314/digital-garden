@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-// import Profile from "../profile";
 
 type Profile = {
   src: string;
