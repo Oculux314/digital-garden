@@ -27,7 +27,7 @@ const PlantCard = ({ plant }: PlantCardProps) => {
         return notFound();
       }
       console.log("watered");
-      waterPlant(user, plant.id);
+      waterPlant(user.id, plant.id);
     }
   };
   return (

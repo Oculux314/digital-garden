@@ -1,10 +1,13 @@
 "use server";
 import { UserType } from "@/models/user";
 import {
-  createUser as _createUser, stealPlant as _stealPlant, waterPlant as _waterPlant,
+  createUser as _createUser,
+  stealPlant as _stealPlant,
+  waterPlant as _waterPlant,
   getUsers,
-  getUserById as _getUserById, getUserByEmail as _getUserByEmail,
-  getUsersByNameOrEmail
+  getUserById as _getUserById,
+  getUserByEmail as _getUserByEmail,
+  getUsersByNameOrEmail,
 } from "@/services/userService";
 
 export async function createUser(user: { name: string }) {
@@ -12,13 +15,15 @@ export async function createUser(user: { name: string }) {
 }
 
 export async function stealPlant(
-    user: UserType, otherUser: UserType, index: number) {
+  user: UserType,
+  otherUser: UserType,
+  index: number
+) {
   _stealPlant(user, otherUser, index);
 }
 
-export async function waterPlant(
-    user: UserType, index: number) {
-  _waterPlant(user, index);
+export async function waterPlant(userId: string, plantId: string) {
+  _waterPlant(userId, plantId);
 }
 
 export async function getUserById(id: string) {
