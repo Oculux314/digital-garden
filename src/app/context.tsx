@@ -1,4 +1,3 @@
-
 "use client";
 import { PlantType } from "@/models/plant";
 import { Session } from "next-auth";
