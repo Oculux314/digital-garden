@@ -6,7 +6,7 @@ export type PlantCardProps = {
 
 const PlantCard = ({ plant }: PlantCardProps) => {
   return (
-    <div className="border-black border py-16 flex justify-center rounded-lg m-1">
+    <div className="border-black border py-36 flex justify-center rounded-lg m-1">
       Plant Card
     </div>
   );
