@@ -5,8 +5,8 @@ export type PlantType = {
   id: string;
   name: string;
   type: string;
+  lastWatered: Date;
   stage: number;
-  water: boolean;
 };
 
 export const PlantSchema = new Schema({
@@ -18,6 +18,10 @@ export const PlantSchema = new Schema({
     type: String,
     required: true,
   },
+  lastWatered: {
+    type: Date,
+    required: true,
+  }
 });
 
 export const Plant = model("Plant", PlantSchema);
