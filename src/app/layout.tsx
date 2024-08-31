@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Digital Garden",
   description: "Create your digital garden!",
   icons: {
-    icon: "favicon.ico",
+    icon: "/favicon.ico",
   },
 };
 
