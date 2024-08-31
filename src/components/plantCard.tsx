@@ -4,6 +4,7 @@ import InfoComponent from "./info";
 import Plant from "./plant";
 import { useAppContext } from "@/app/context";
 import { waterPlant } from "@/routes/userRoute";
+import { notFound } from "next/navigation";
 
 export type PlantCardProps = {
   plant: PlantType | null;
@@ -19,10 +20,14 @@ const PlantCard = ({ plant }: PlantCardProps) => {
     }
   };
 
-  const waterPlant = () => {
+  const wateringPlant = () => {
     if (context.state.toolSelector == "water" && plant) {
+      const user = context.state.session?.user;
+      if (!user) {
+        return notFound();
+      }
       console.log("watered");
-      waterPlant();
+      waterPlant(user, plant.id);
     }
   };
   return (
