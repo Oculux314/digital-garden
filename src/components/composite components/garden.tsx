@@ -43,7 +43,7 @@ const Garden = () => {
       <div className="grid grid-cols-3">
         {plants.map((plant, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="col">
               <Plant key={index} plant={plant} />
               <PlantCard key={index} plant={plant} />
             </div>
