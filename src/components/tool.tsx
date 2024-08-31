@@ -16,7 +16,7 @@ const Tool = ({ image, name, onClick }: ToolProps) => {
   return (
     <button
       onClick={handleClick}
-      className="w-16 h-16 flex items-center justify-center border-none rounded-lg bg-teal-600 hover:bg-teal-800"
+      className="w-16 h-16 flex items-center justify-center border-none rounded-lg bg-teal-600 hover:bg-red-800"
     >
       <Image src={image} alt={name} width={64} height={64} />
     </button>
