@@ -1,16 +1,50 @@
 import { PlantType } from "@/models/plant";
 import Image from "next/image";
+import flowers from "@/config/flowers";
 
 export type PlantProps = {
   plant: PlantType;
 };
 
 const Plant = ({ plant }: PlantProps) => {
-  const { id, name, type, lastWatered, stage } = plant;
+  const {name} = plant;
+
+let imageUrl;
+
+  switch (name) {
+    case "Blissful Bud":
+      imageUrl = flowers.blissfulbud.imageurl;
+      break;
+    case "Cobalt Rose":
+      imageUrl = flowers.cobaltrose.imageurl;
+      break;
+    case "Fire Petal":
+      imageUrl = flowers.firepetal.imageurl;
+      break;
+    case "Giggleweed":
+      imageUrl = flowers.giggleweed.imageurl;
+      break;
+    case "Moon Blossom":
+      imageUrl = flowers.moonblossom.imageurl;
+      break;
+    case "Shadow Bloom":
+      imageUrl = flowers.shadowbloom.imageurl;
+      break;
+    case "Thunderbud":
+      imageUrl = flowers.thunderbud.imageurl;
+      break;
+    case "Violet Menace":
+      imageUrl = flowers.violetmenace.imageurl;
+      break;
+    default:
+      imageUrl = "/img/flowericons/violetmenace.png";
+      break;
+
+  }
 
   return (
-    <Image src={plant.image} alt={plant.name} />
-    // <div className="fixed mt-4 ml-4 bg-white">
+    <div><Image src={imageUrl} alt={plant.name} objectFit="cover" className = "w-full h-full"/></div>
+    // <div className="fixed mt-4 ml-4 bg-black">
     //   <div className="border border-black">insert plant image here</div>
     //   <div>this plant is on growth stage: {plant.stage}</div>
     //   <div>this plant last watered {plant.lastWatered.toISOString()}</div>

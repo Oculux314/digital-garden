@@ -31,7 +31,7 @@ const PlantCard = ({ plant }: PlantCardProps) => {
     <div className="group ">
       <div
         onClick={handlePlantClick}
-        className="border-black border py-16 flex justify-center rounded-lg m-1"
+        className="border-black border-4 wh-full aspect-square py-16 flex justify-center rounded-lg m-1" 
       >
         {plant && <Plant plant={plant} />}
       </div>
