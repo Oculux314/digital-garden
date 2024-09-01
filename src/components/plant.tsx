@@ -44,7 +44,7 @@ let imageUrl;
 
   return (
     <div className="relative">
-    <div><Image src={imageUrl} alt={plant.name} objectFit="cover" className = "w-full h-full" style={{ marginTop: '40px' }}/></div>
+    <div><Image src={imageUrl} alt={plant.name} objectFit="cover" className = "w-full h-full" style={{ marginTop: '30px' }}/></div>
     <div className="text-white">
     {plant.lastWatered.toDateString()}
     </div>
