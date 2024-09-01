@@ -1,4 +1,5 @@
 "use server";
+import { PlantType } from "@/models/plant";
 import { UserType } from "@/models/user";
 import {
   createUser as _createUser,
@@ -13,6 +14,10 @@ import {
 
 export async function createUser(user: { name: string }) {
   return _createUser(user);
+}
+
+export async function addPlant(user: UserType, plant: PlantType) {
+  return _addPlant(user, plant);
 }
 
 export async function stealPlant(

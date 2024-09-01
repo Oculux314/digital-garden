@@ -10,69 +10,35 @@ import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const initialPlants: PlantType[] = [
-  {
-    id: "1",
-    name: "Blissful Bud",
-    type: "Flower",
-    stage: 2,
-    lastWatered: new Date(1),
-  },
-  {
-    id: "2",
-    name: "Cobalt Rose",
-    type: "Flower",
-    stage: 1,
-    lastWatered: new Date(1),
-  },
+  { id: "1", name: "Blissful Bud", type: "Flower", lastWatered: new Date(1) },
+  { id: "2", name: "Cobalt Rose", type: "Flower", lastWatered: new Date(1) },
   {
     id: "3",
     name: "Fire Petal",
     type: "Succulent",
-    stage: 3,
     lastWatered: new Date(1),
   },
-  {
-    id: "4",
-    name: "Shadow Bloom",
-    type: "Fern",
-    stage: 2,
-    lastWatered: new Date(1),
-  },
+  { id: "4", name: "Shadow Bloom", type: "Fern", lastWatered: new Date(1) },
   {
     id: "5",
     name: "Giggleweed",
     type: "Flower",
-    stage: 4,
     lastWatered: new Date(1),
   },
-  {
-    id: "6",
-    name: "Shadow Bloom",
-    type: "Grass",
-    stage: 2,
-    lastWatered: new Date(1),
-  },
+  { id: "6", name: "Shadow Bloom", type: "Grass", lastWatered: new Date(1) },
   {
     id: "7",
     name: "Thunderbud",
     type: "Herb",
-    stage: 1,
     lastWatered: new Date(1),
   },
   {
     id: "8",
     name: "Violet Menace",
     type: "Flower",
-    stage: 3,
     lastWatered: new Date(1),
   },
-  {
-    id: "9",
-    name: "Shadow Bloom",
-    type: "Herb",
-    stage: 1,
-    lastWatered: new Date(1),
-  },
+  { id: "9", name: "Shadow Bloom", type: "Herb", lastWatered: new Date(1) },
 ];
 
 // Initial state

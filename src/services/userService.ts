@@ -35,7 +35,13 @@ export async function getUsersByNameOrEmail(
 }
 
 export async function addPlant(user: UserType, plant: PlantType) {
-  return User.findByIdAndUpdate(user.id, { plants: user.plants.concat(plant) });
+  let plants;
+  if ("plants" in user) {
+    plants = user.plants.concat(plant);
+  } else {
+    plants = [plant];
+  }
+  return User.findByIdAndUpdate(user.id, {$set: {plants: plants}});
 }
 
 export async function deletePlant(user: UserType, plant: PlantType) {

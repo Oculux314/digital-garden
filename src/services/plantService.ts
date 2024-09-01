@@ -1,6 +1,6 @@
 import { Plant, PlantType } from "@/models/plant";
 
-export async function createPlant(plant: Omit<PlantType, "id">) {
+export async function createPlant(plant: {name: string, type: string, lastWatered: Date}): Promise<PlantType> {
   return Plant.create(plant);
 }
 
