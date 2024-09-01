@@ -1,11 +1,11 @@
 "use client";
+import { useAppContext } from "@/app/context";
+import CardImg from "@/img/card.jpg";
 import { PlantType } from "@/models/plant";
+import { waterPlant } from "@/routes/userRoute";
+import Image from "next/image";
 import InfoComponent from "./info";
 import Plant from "./plant";
-import { useAppContext } from "@/app/context";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import CardImg from "@/img/card.jpg";
 
 export type PlantCardProps = {
   plant: PlantType | null;
@@ -13,32 +13,27 @@ export type PlantCardProps = {
 
 const PlantCard = ({ plant }: PlantCardProps) => {
   const context = useAppContext();
-  const [shouldDelete, setShouldDelete] = useState(false);
+  const user = context.state.session?.user;
 
   const handlePlantClick = () => {
-    if (context.state.toolSelector === "shovel" && plant) {
-      setShouldDelete(true);
-      context.selectTool("unselected");
+    if (context.state.selectedTool === "shovel" && plant) {
+      context.deletePlant(plant.id);
+    }
+    if (context.state.selectedTool === "water" && plant && user?.id) {
+      waterPlant(user.id, plant.id);
     }
   };
-  
-  useEffect(() => {
-    if (shouldDelete && plant) {
-      context.deletePlant(plant.id);
-      setShouldDelete(false);
-    }
-  }, [context.state.toolSelector, shouldDelete, plant]);
 
   return (
     <div className="group w-[200px] h-[200px] relative border-black border-4 aspect-square rounded-lg m-1">
-      <Image 
-        src={CardImg} 
-        alt="Card background" 
-        layout="fill" 
-        objectFit="cover" 
-        className="absolute inset-0 rounded-lg" 
+      <Image
+        src={CardImg}
+        alt="Card background"
+        layout="fill"
+        objectFit="cover"
+        className="absolute inset-0 rounded-lg"
       />
-      <div 
+      <div
         onClick={handlePlantClick}
         className="relative z-10 flex justify-center items-center"
       >
