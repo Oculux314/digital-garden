@@ -16,17 +16,16 @@ export async function createUser(user: { name: string }) {
 }
 
 export async function stealPlant(
-  user: UserType,
-  otherUser: UserType,
-  index: number
+  userId: string,
+  otherUserId: string,
+  plantId: string
 ) {
-  _stealPlant(user, otherUser, index);
+  console.log(userId);
+  const log = await getUserByEmail(userId)!;
+  _stealPlant(log?.id!, otherUserId, plantId);
 }
 
-export async function deletePlant(
-  userId: string,
-  indexId: string,
-) {
+export async function deletePlant(userId: string, indexId: string) {
   deletePlantByIds(userId, indexId);
 }
 

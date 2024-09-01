@@ -2,25 +2,33 @@
 import { useAppContext } from "@/app/context";
 import CardImg from "@/img/card.jpg";
 import { PlantType } from "@/models/plant";
-import { waterPlant } from "@/routes/userRoute";
+import { getUserByEmail, stealPlant, waterPlant } from "@/routes/userRoute";
 import Image from "next/image";
 import InfoComponent from "./info";
 import Plant from "./plant";
+import { User } from "next-auth";
 
 export type PlantCardProps = {
   plant: PlantType | null;
+  user: string;
 };
 
-const PlantCard = ({ plant }: PlantCardProps) => {
+const PlantCard = ({ plant, user }: PlantCardProps) => {
   const context = useAppContext();
-  const user = context.state.session?.user;
+  const loggedInUser = context.state.session?.user?.email!;
+
+  console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh", loggedInUser);
 
   const handlePlantClick = () => {
     if (context.state.selectedTool === "shovel" && plant) {
-      context.deletePlant(plant.id);
+      if (loggedInUser === user) {
+        context.deletePlant(plant.id);
+      } else {
+        stealPlant(loggedInUser, user, plant.id);
+      }
     }
-    if (context.state.selectedTool === "water" && plant && user?.id) {
-      waterPlant(user.id, plant.id);
+    if (context.state.selectedTool === "water" && plant && user) {
+      waterPlant(user, plant.id);
     }
   };
 
