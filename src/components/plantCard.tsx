@@ -21,7 +21,7 @@ const PlantCard = ({ plant }: PlantCardProps) => {
       context.selectTool("unselected");
     }
   };
-
+  
   useEffect(() => {
     if (shouldDelete && plant) {
       context.deletePlant(plant.id);
@@ -30,14 +30,21 @@ const PlantCard = ({ plant }: PlantCardProps) => {
   }, [context.state.toolSelector, shouldDelete, plant]);
 
   return (
-    <div className="group ">
-      <div
+    <div className="group w-[200px] h-[200px] relative border-black border-4 aspect-square rounded-lg m-1">
+      <Image 
+        src={CardImg} 
+        alt="Card background" 
+        layout="fill" 
+        objectFit="cover" 
+        className="absolute inset-0 rounded-lg" 
+      />
+      <div 
         onClick={handlePlantClick}
-        className="border-black border-4 wh-full aspect-square py-16 flex justify-center rounded-lg m-1" 
-        <Image src={CardImg} alt="" layout="fill" className="rounded-lg" />
+        className="relative z-10 flex justify-center items-center"
+      >
         {plant && <Plant plant={plant} />}
       </div>
-      <div className="hidden group-hover:block">
+      <div className="hidden group-hover:block absolute bottom-0 left-0 right-0">
         <InfoComponent />
       </div>
     </div>
