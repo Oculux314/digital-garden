@@ -21,10 +21,13 @@ const PlantCard = ({ plant, user }: PlantCardProps) => {
 
   const handlePlantClick = () => {
     if (context.state.selectedTool === "shovel" && plant) {
+      console.error(loggedInUser);
+      console.error(user);
+
       if (loggedInUser === user) {
         context.deletePlant(plant.id);
       } else {
-        stealPlant(loggedInUser, user, plant.id);
+        context.deletePlant(plant.id, user);
       }
     }
     if (context.state.selectedTool === "water" && plant && user) {

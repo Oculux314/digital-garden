@@ -4,14 +4,26 @@ import {
   deletePlant as _deletePlant,
   getUserByEmail,
 } from "@/routes/userRoute";
-import { Session } from "next-auth";
+import { Session, User } from "next-auth";
 import { signIn } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const initialPlants: PlantType[] = [
-  { id: "1", name: "Blissful Bud", type: "Flower", stage: 2, lastWatered: new Date(1)},
-  { id: "2", name: "Cobalt Rose", type: "Flower", stage: 1, lastWatered: new Date(1) },
+  {
+    id: "1",
+    name: "Blissful Bud",
+    type: "Flower",
+    stage: 2,
+    lastWatered: new Date(1),
+  },
+  {
+    id: "2",
+    name: "Cobalt Rose",
+    type: "Flower",
+    stage: 1,
+    lastWatered: new Date(1),
+  },
   {
     id: "3",
     name: "Fire Petal",
@@ -19,7 +31,13 @@ const initialPlants: PlantType[] = [
     stage: 3,
     lastWatered: new Date(1),
   },
-  { id: "4", name: "Shadow Bloom", type: "Fern", stage: 2, lastWatered: new Date(1) },
+  {
+    id: "4",
+    name: "Shadow Bloom",
+    type: "Fern",
+    stage: 2,
+    lastWatered: new Date(1),
+  },
   {
     id: "5",
     name: "Giggleweed",
@@ -27,7 +45,13 @@ const initialPlants: PlantType[] = [
     stage: 4,
     lastWatered: new Date(1),
   },
-  { id: "6", name: "Shadow Bloom", type: "Grass", stage: 2, lastWatered: new Date(1) },
+  {
+    id: "6",
+    name: "Shadow Bloom",
+    type: "Grass",
+    stage: 2,
+    lastWatered: new Date(1),
+  },
   {
     id: "7",
     name: "Thunderbud",
@@ -42,7 +66,13 @@ const initialPlants: PlantType[] = [
     stage: 3,
     lastWatered: new Date(1),
   },
-  { id: "9", name: "Shadow Bloom", type: "Herb", stage: 1, lastWatered: new Date(1) },
+  {
+    id: "9",
+    name: "Shadow Bloom",
+    type: "Herb",
+    stage: 1,
+    lastWatered: new Date(1),
+  },
 ];
 
 // Initial state
@@ -57,7 +87,7 @@ type StateType = {
 type ContextType = {
   state: StateType;
   selectTool: (newTool: ToolTypes) => void;
-  deletePlant: (id: string) => void;
+  deletePlant: (id: string, user?: string) => void;
 };
 
 // Create context
@@ -93,7 +123,7 @@ export default function AppContextProvider({
     setState({ ...state, selectedTool: newTool });
   };
 
-  const deletePlant = async (id: string) => {
+  const deletePlant = async (id: string, userId?: string) => {
     if (!state.session?.user?.email) {
       console.log("No user found in session");
       return;
@@ -107,7 +137,7 @@ export default function AppContextProvider({
       return plant?.id === id ? null : plant;
     });
     setState({ ...state, selectedTool: "unselected", plants: newPlants });
-    await _deletePlant(user.id, id);
+    await _deletePlant(userId ?? user.id, id);
   };
 
   return (
