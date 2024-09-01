@@ -16,18 +16,14 @@ const PlantCard = ({ plant }: PlantCardProps) => {
   const handlePlantClick = () => {
     if (context.state.selectedTool === "shovel" && plant) {
       context.deletePlant(plant.id);
-      context.selectTool("unselected");
-      console.log("Shovel function called");
     }
     if (context.state.selectedTool === "water" && plant && user?.id) {
       waterPlant(user.id, plant.id);
-      context.selectTool("unselected");
-      console.log("Water function called");
     }
   };
 
   return (
-    <div className="group ">
+    <div className="group">
       <div
         onClick={handlePlantClick}
         className="border-black border py-16 flex justify-center rounded-lg m-1"

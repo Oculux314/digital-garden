@@ -3,11 +3,23 @@ import { PlantType } from "@/models/plant";
 import { Session } from "next-auth";
 import { signIn } from "next-auth/react";
 import { usePathname } from "next/navigation";
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 const initialPlants: PlantType[] = [
-  { id: "1", name: "Rose", type: "Flower", stage: 2, lastWatered: new Date(1)},
-  { id: "2", name: "Tulip", type: "Flower", stage: 1, lastWatered: new Date(1) },
+  { id: "1", name: "Rose", type: "Flower", stage: 2, lastWatered: new Date(1) },
+  {
+    id: "2",
+    name: "Tulip",
+    type: "Flower",
+    stage: 1,
+    lastWatered: new Date(1),
+  },
   {
     id: "3",
     name: "Cactus",
@@ -23,7 +35,13 @@ const initialPlants: PlantType[] = [
     stage: 4,
     lastWatered: new Date(1),
   },
-  { id: "6", name: "Bamboo", type: "Grass", stage: 2, lastWatered: new Date(1) },
+  {
+    id: "6",
+    name: "Bamboo",
+    type: "Grass",
+    stage: 2,
+    lastWatered: new Date(1),
+  },
   {
     id: "7",
     name: "Lavender",
@@ -74,31 +92,35 @@ export default function AppContextProvider({
     plants: initialPlants,
   });
 
+  console.log(state.plants);
+
   const path = usePathname();
 
   useEffect(() => {
     if (!state.session && path !== "/test/loginpagetest") {
       signIn(); // Trigger sign-in process if session is not available
     }
-  }, [state.session, path]);
-
-  // Show loading or authentication indicator while processing
-  // if (!state.session) {
-  //   return <p>Loading...</p>; // Or another loading indicator
-  // }
+  }, [state.session, path, signIn]);
 
   // State modifier functions
-  const selectTool = (newTool: ToolTypes) => {
-    console.log("Switching to tool: ", newTool);
-    setState({ ...state, selectedTool: newTool });
-  };
 
-  const deletePlant = (id: string) => {
-    const newPlants = state.plants.map((plant) => {
-      return plant?.id === id ? null : plant;
-    });
-    setState({ ...state, plants: newPlants });
-  };
+  const selectTool = useCallback(
+    (newTool: ToolTypes) => {
+      console.log("Switching to tool: ", newTool);
+      setState({ ...state, selectedTool: newTool });
+    },
+    [state, setState]
+  );
+
+  const deletePlant = useCallback(
+    (id: string) => {
+      const newPlants = state.plants.map((plant) => {
+        return plant?.id === id ? null : plant;
+      });
+      setState({ ...state, selectedTool: "unselected", plants: newPlants });
+    },
+    [state, setState]
+  );
 
   return (
     <AppContext.Provider value={{ state, selectTool, deletePlant }}>
@@ -112,9 +134,6 @@ export const useAppContext = (): ContextType => {
   const context = useContext(AppContext);
   if (!context) {
     throw new Error("useAppContext must be used within an AppContextProvider");
-  }
-  if (!context.state.session) {
-    signIn();
   }
   return context;
 };
