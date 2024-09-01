@@ -33,8 +33,7 @@ const PlantCard = ({ plant }: PlantCardProps) => {
     <div className="group ">
       <div
         onClick={handlePlantClick}
-        className="relative border-black border-2 py-16 flex justify-center rounded-lg m-1"
-      >
+        className="border-black border-4 wh-full aspect-square py-16 flex justify-center rounded-lg m-1" 
         <Image src={CardImg} alt="" layout="fill" className="rounded-lg" />
         {plant && <Plant plant={plant} />}
       </div>
