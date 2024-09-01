@@ -2,11 +2,12 @@
 import { UserType } from "@/models/user";
 import {
   createUser as _createUser,
+  getUserByEmail as _getUserByEmail,
+  getUserById as _getUserById,
   stealPlant as _stealPlant,
   waterPlant as _waterPlant,
+  deletePlantByIds,
   getUsers,
-  getUserById as _getUserById,
-  getUserByEmail as _getUserByEmail,
   getUsersByNameOrEmail,
 } from "@/services/userService";
 
@@ -22,6 +23,13 @@ export async function stealPlant(
   _stealPlant(user, otherUser, index);
 }
 
+export async function deletePlant(
+  userId: string,
+  indexId: string,
+) {
+  deletePlantByIds(userId, indexId);
+}
+
 export async function waterPlant(userId: string, plantId: string) {
   _waterPlant(userId, plantId);
 }
@@ -31,7 +39,16 @@ export async function getUserById(id: string) {
 }
 
 export async function getUserByEmail(email: string) {
-  return _getUserByEmail(email);
+  const user = await _getUserByEmail(email);
+  if (!user) {
+    return null;
+  }
+  return {
+    id: user.id,
+    email: user.email,
+    name: user.name,
+    plants: user.plants,
+  };
 }
 
 export async function searchForUser(searchText: string) {

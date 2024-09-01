@@ -1,15 +1,13 @@
 "use client";
 import { PlantType } from "@/models/plant";
+import {
+  deletePlant as _deletePlant,
+  getUserByEmail,
+} from "@/routes/userRoute";
 import { Session } from "next-auth";
 import { signIn } from "next-auth/react";
 import { usePathname } from "next/navigation";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const initialPlants: PlantType[] = [
   { id: "1", name: "Rose", type: "Flower", stage: 2, lastWatered: new Date(1) },
@@ -92,8 +90,6 @@ export default function AppContextProvider({
     plants: initialPlants,
   });
 
-  console.log(state.plants);
-
   const path = usePathname();
 
   useEffect(() => {
@@ -104,23 +100,27 @@ export default function AppContextProvider({
 
   // State modifier functions
 
-  const selectTool = useCallback(
-    (newTool: ToolTypes) => {
-      console.log("Switching to tool: ", newTool);
-      setState({ ...state, selectedTool: newTool });
-    },
-    [state, setState]
-  );
+  const selectTool = (newTool: ToolTypes) => {
+    console.log("Switching to tool: ", newTool);
+    setState({ ...state, selectedTool: newTool });
+  };
 
-  const deletePlant = useCallback(
-    (id: string) => {
-      const newPlants = state.plants.map((plant) => {
-        return plant?.id === id ? null : plant;
-      });
-      setState({ ...state, selectedTool: "unselected", plants: newPlants });
-    },
-    [state, setState]
-  );
+  const deletePlant = async (id: string) => {
+    if (!state.session?.user?.email) {
+      console.log("No user found in session");
+      return;
+    }
+    const user = await getUserByEmail(state.session?.user?.email);
+    if (!user?.id) {
+      console.log("No user found in session");
+      return;
+    }
+    const newPlants = state.plants.map((plant) => {
+      return plant?.id === id ? null : plant;
+    });
+    setState({ ...state, selectedTool: "unselected", plants: newPlants });
+    await _deletePlant(user.id, id);
+  };
 
   return (
     <AppContext.Provider value={{ state, selectTool, deletePlant }}>

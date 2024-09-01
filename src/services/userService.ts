@@ -63,6 +63,16 @@ export async function stealPlant(
   addPlant(user, plant);
 }
 
+export async function deletePlantByIds(userId: string, plantId: string) {
+  const user = await getUserById(userId);
+  if (!user) {
+    return notFound();
+  }
+  return User.findByIdAndUpdate(user.id, {
+    plants: user.plants.filter((plant) => plant.id !== plantId),
+  });
+}
+
 export async function waterPlant(userId: string, plantId: string) {
   const user = await getUserById(userId);
   if (!user) {
