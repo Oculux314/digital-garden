@@ -3,6 +3,7 @@ import { PlantType } from "@/models/plant";
 import { UserType } from "@/models/user";
 import {
   createUser as _createUser,
+  addPlant as _addPlant,
   getUserByEmail as _getUserByEmail,
   getUserById as _getUserById,
   stealPlant as _stealPlant,

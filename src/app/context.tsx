@@ -9,38 +9,6 @@ import { signIn } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
-const initialPlants: PlantType[] = [
-  { id: "1", name: "Blissful Bud", type: "Flower", lastWatered: new Date(1) },
-  { id: "2", name: "Cobalt Rose", type: "Flower", lastWatered: new Date(1) },
-  {
-    id: "3",
-    name: "Fire Petal",
-    type: "Succulent",
-    lastWatered: new Date(1),
-  },
-  { id: "4", name: "Shadow Bloom", type: "Fern", lastWatered: new Date(1) },
-  {
-    id: "5",
-    name: "Giggleweed",
-    type: "Flower",
-    lastWatered: new Date(1),
-  },
-  { id: "6", name: "Shadow Bloom", type: "Grass", lastWatered: new Date(1) },
-  {
-    id: "7",
-    name: "Thunderbud",
-    type: "Herb",
-    lastWatered: new Date(1),
-  },
-  {
-    id: "8",
-    name: "Violet Menace",
-    type: "Flower",
-    lastWatered: new Date(1),
-  },
-  { id: "9", name: "Shadow Bloom", type: "Herb", lastWatered: new Date(1) },
-];
-
 // Initial state
 export type ToolTypes = "shovel" | "water" | "unselected";
 
@@ -71,7 +39,7 @@ export default function AppContextProvider({
   const [state, setState] = useState<StateType>({
     session: initialSession,
     selectedTool: "unselected",
-    plants: initialPlants,
+    plants: [],
   });
 
   const path = usePathname();
@@ -81,6 +49,19 @@ export default function AppContextProvider({
       signIn(); // Trigger sign-in process if session is not available
     }
   }, [state.session, path, signIn]);
+
+  const email = state.session?.user?.email;
+  if (email) {
+    useEffect(() => {
+      const getPlants = async () => {
+        const user = await getUserByEmail(email);
+        if (user) {
+          setState({ ...state, plants: user?.plants });
+        }
+      }
+      getPlants();
+    }, []);
+  }
 
   // State modifier functions
 
