@@ -51,10 +51,15 @@ export async function deletePlant(user: UserType, plant: PlantType) {
 }
 
 export async function stealPlant(
-  user: UserType,
-  otherUser: UserType,
-  index: number
+  userId: string,
+  otherUserId: string,
+  plantId: string
 ) {
+  console.log("WOWOW", userId);
+  const user = (await getUserById(userId))!;
+  const otherUser = (await getUserById(otherUserId))!;
+  const index = otherUser?.plants.findIndex((plant) => plant.id === plantId);
+
   if (user.plants.length >= MAX_PLANTS) {
     throw Error("You already have " + MAX_PLANTS + " plants");
   }

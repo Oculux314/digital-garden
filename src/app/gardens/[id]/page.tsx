@@ -6,10 +6,11 @@ import { redirect } from "next/navigation";
 export default async function Page({ params }: { params: { id: string } }) {
   try {
     const user = await getUserById(params.id);
+
     if (user) {
       return (
         <div className="h-full w-full">
-          <Garden />
+          <Garden user={user.id} />
         </div>
       );
     } else {

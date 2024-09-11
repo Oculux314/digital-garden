@@ -21,7 +21,7 @@ export default async function Home() {
     let keys = Object.keys(flowers);
     let values = Object.values(flowers);
     for (let i = 0; i < 2; i++) {
-      let index = Math.floor(Math.random()*keys.length);
+      let index = Math.floor(Math.random() * keys.length);
       let plant = await createPlant({
         name: values[index].name,
         type: keys[index],
@@ -33,7 +33,7 @@ export default async function Home() {
   }
   return (
     <div className="h-full w-full">
-      <Garden />
+      <Garden user={user?.id!} />
     </div>
   );
 }

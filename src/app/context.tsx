@@ -4,13 +4,13 @@ import {
   deletePlant as _deletePlant,
   getUserByEmail,
 } from "@/routes/userRoute";
-import { Session } from "next-auth";
+import { Session, User } from "next-auth";
 import { signIn } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const initialPlants: PlantType[] = [
-  { id: "1", name: "Blissful Bud", type: "Flower", lastWatered: new Date(1)},
+  { id: "1", name: "Blissful Bud", type: "Flower", lastWatered: new Date(1) },
   { id: "2", name: "Cobalt Rose", type: "Flower", lastWatered: new Date(1) },
   {
     id: "3",
@@ -53,7 +53,7 @@ type StateType = {
 type ContextType = {
   state: StateType;
   selectTool: (newTool: ToolTypes) => void;
-  deletePlant: (id: string) => void;
+  deletePlant: (id: string, user?: string) => void;
 };
 
 // Create context
@@ -89,7 +89,7 @@ export default function AppContextProvider({
     setState({ ...state, selectedTool: newTool });
   };
 
-  const deletePlant = async (id: string) => {
+  const deletePlant = async (id: string, userId?: string) => {
     if (!state.session?.user?.email) {
       console.log("No user found in session");
       return;
@@ -103,7 +103,7 @@ export default function AppContextProvider({
       return plant?.id === id ? null : plant;
     });
     setState({ ...state, selectedTool: "unselected", plants: newPlants });
-    await _deletePlant(user.id, id);
+    await _deletePlant(userId ?? user.id, id);
   };
 
   return (
