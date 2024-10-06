@@ -11,12 +11,10 @@ export default async function Home() {
   if (!email) {
     notFound();
   }
-  console.log(email);
   const user = await getUserByEmail(email);
   if (!user) {
     notFound();
   }
-  console.log(user);
   if (user.plants.length == 0) {
     let keys = Object.keys(flowers);
     let values = Object.values(flowers);
@@ -28,7 +26,6 @@ export default async function Home() {
         lastWatered: new Date(),
       });
       addPlant(user, plant);
-      console.log(plant);
     }
   }
   return (

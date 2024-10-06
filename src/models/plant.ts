@@ -24,4 +24,4 @@ export const PlantSchema = new mongoose.Schema({
 });
 
 export const Plant =
-  mongoose.models?.Plant ?? mongoose.model("Plant", PlantSchema);
+  mongoose.models?.Plant ?? mongoose.model<PlantType>("Plant", PlantSchema);

@@ -17,8 +17,6 @@ const PlantCard = ({ plant, user }: PlantCardProps) => {
   const context = useAppContext();
   const loggedInUser = context.state.session?.user?.email!;
 
-  console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh", loggedInUser);
-
   const handlePlantClick = () => {
     if (context.state.selectedTool === "shovel" && plant) {
       console.error(loggedInUser);
