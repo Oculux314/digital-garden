@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className="bg-cyan-200 p-6 flex items-center">
+    <header className="backdrop-blur-sm p-6 flex items-center">
       <div className="flex w-full items-center gap-4 mr-3">
         <Link className="flex gap-4 " href= "/">
             {/* Logo */}
