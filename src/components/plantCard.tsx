@@ -36,7 +36,7 @@ const PlantCard = ({ plant, user }: PlantCardProps) => {
   };
 
   return (
-    <div className="group w-[200px] h-[200px] relative border-black border-4 aspect-square rounded-lg m-1">
+    <div className="group w-[200px] h-[200px] relative border-black border-4 aspect-square rounded-[14px] m-1">
       <Image
         src={CardImg}
         alt="Card background"

@@ -44,10 +44,18 @@ let imageUrl;
 
   return (
     <div className="relative">
-    <div><Image src={imageUrl} alt={plant.name} objectFit="cover" className = "w-full h-full" style={{ marginTop: '30px' }}/></div>
-    <div className="text-white">
-    {plant.lastWatered.toDateString()}
-    </div>
+      <div>
+        <Image 
+          src={imageUrl} 
+          alt={plant.name} 
+          objectFit="cover" 
+          className="w-full h-full" 
+          style={{ marginTop: '15px' }} 
+        />
+        <div className="relative w-full text-white text-center bg-opacity-20 bg-black">
+          {plant.lastWatered.toDateString()}
+        </div>
+      </div>
     </div>
     // <div className="fixed mt-4 ml-4 bg-black">
     //   <div className="border border-black">insert plant image here</div>
