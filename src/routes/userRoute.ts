@@ -2,6 +2,7 @@
 import { PlantType } from "@/models/plant";
 import { UserType } from "@/models/user";
 import {
+  addPlant as _addPlant,
   createUser as _createUser,
   getUserByEmail as _getUserByEmail,
   getUserById as _getUserById,
@@ -25,7 +26,6 @@ export async function stealPlant(
   otherUserId: string,
   plantId: string
 ) {
-  console.log(userId);
   const log = await getUserByEmail(userId)!;
   _stealPlant(log?.id!, otherUserId, plantId);
 }

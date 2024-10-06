@@ -19,8 +19,6 @@ export async function getUserById(id: string): Promise<UserType | null> {
 }
 
 export async function getUserByEmail(email: string): Promise<UserType | null> {
-  console.log("WOWOW", await User.findOne({ email }));
-
   return (await User.findOne({ email }));
 }
 
