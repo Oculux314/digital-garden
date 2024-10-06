@@ -1,6 +1,8 @@
 "use client";
 import { searchForUser } from '@/routes/userRoute';
 import React, { useState } from 'react';
+import mgpic from '@/img/magnifying glass.png';
+import Image from 'next/image';
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');
@@ -22,17 +24,21 @@ const SearchBar = () => {
             type="text"
             /* style={{ fontFamily: "'Courier New', sans-serif" }} */
             placeholder="Search Username..."
-            className="search-button px-4 py-2 bg-white-500 text-black text-sm font-bold rounded-l-md hover:bg-white-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="search-button px-4 py-2 bg-white-500 text-black text-sm font-bold rounded-md hover:bg-white-600 focus:outline-none focus:ring-2 focus:ring-green-500"
             value={query}
             onChange={handleInputChange}
           />
-          <button
+          {/* <button
             className="search-button px-4 py-2 bg-green-500 text-white text-sm font-bold rounded-r-md hover:bg-white-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-            /*style={{ fontFamily: "'Courier New', sans-serif" }} */
             onClick={handleSearch}
           >
             Search
-          </button>
+          </button> */}
+          <Image
+              src={mgpic}
+              alt="Search Icon"
+              className="w-6 h-6 inline absolute right-10 mt-[5px]" 
+            />
         </div>
   );
 };
