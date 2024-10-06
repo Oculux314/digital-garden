@@ -28,12 +28,6 @@ const SearchBar = () => {
             value={query}
             onChange={handleInputChange}
           />
-          {/* <button
-            className="search-button px-4 py-2 bg-green-500 text-white text-sm font-bold rounded-r-md hover:bg-white-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-            onClick={handleSearch}
-          >
-            Search
-          </button> */}
           <Image
               src={mgpic}
               alt="Search Icon"
